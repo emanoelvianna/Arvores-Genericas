@@ -8,46 +8,45 @@ import java.util.List;
 
 
 public class GenealogyApp {
+
 	public static void main(String[] args) {
 		GeneralTree arvore = readTree("ArvoreTeste_UTF8.txt");
 
 		// conjunto inicial de casos de teste
-		// complete-o para os métodos não implementados
+		// complete-o para os mÃ©todos nÃ£o implementados
 
-		System.out.println("\n2. Ascendentes de Júlia S01 A02");
-		List<String> asc = arvore.ascendentes("Júlia S01 A02");
+/*		System.out.println("\n2. Ascendentes de JÃºlia S01 A02");
+		List<String> asc = arvore.ascendentes("JÃºlia S01 A02");
 		for (String s : asc) {
 			System.out.print(s + "  ");
 		}
 		System.out.println("\n---");
-
-		System.out.println(
-				"\n3. Número de descendentes de Mauro Paulo S01: " + arvore.contarDescendentes("Mauro Paulo S01"));
+*/
+		System.out.println("\n3. NÃºmero de descendentes de Mauro Paulo S01: "
+				+ arvore.contarDescendentes("Mauro Paulo S01"));
 		System.out.println("\n---");
 
-		System.out.println("\n4. Listar Filhos de ??? :    ????");
+		System.out.println("\n4. Listar Filhos de Mauro Paulo S01: "
+				+ arvore.listarFilhos("Mauro Paulo S01"));
 		System.out.println("\n---");
 
-		System.out.println("\n5. Netos de Edmundo Antônio S01");
-		List<String> netos = arvore.netos("Edmundo Antônio S01");
-		for (String s : netos) {
-			System.out.print(s + "  ");
-		}
-		System.out.println("\n---");
-
-		System.out.println("\n6. Listar Tios de ??? :    ????");
-		System.out.println("\n---");
-
-		System.out.println("\n7. Primos de Júlia S01 A02");
-		List<String> primos = arvore.primos("Júlia S01 A02");
-		for (String s : primos) {
-			System.out.print(s + "  ");
-		}
-		System.out.println("\n---");
-
-		System.out.println("\nMostrar...");
-		arvore.mostrar("AA");
-		arvore.mostrar("Henrique João S01");
+		 System.out.println("\n5. Netos de Edmundo AntÃ´nio S01"); List<String>
+		  netos = arvore.netos("Edmundo AntÃ´nio S01"); 
+		 for (String s : netos) {
+			 System.out.print(s + "  "); 
+		 } 
+		 System.out.println("\n---");
+		 
+		 System.out.println("\n6. Listar Tios de Mauro Paulo S01: " +  arvore.tios("Mauro Paulo S01"));
+		 System.out.println("\n---");
+		   
+		 System.out.println("\n7. Primos de JÃºlia S01 A02");
+		 arvore.primos("JÃºlia S01 A02");
+		 
+		 /* 
+		 System.out.println("\nMostrar..."); arvore.mostrar("AA");
+		  arvore.mostrar("Henrique JoÃ£o S01");
+		 */
 
 	}
 
@@ -55,7 +54,10 @@ public class GenealogyApp {
 
 		GeneralTree arv = null;
 		try {
-			BufferedReader buff = new BufferedReader(new FileReader(arq));
+
+			BufferedReader buff = new BufferedReader(new InputStreamReader(
+					new FileInputStream(arq), "UTF-8"));
+
 			String line = null;
 			try {
 				line = buff.readLine();
