@@ -1,0 +1,9 @@
+2 - listar a ascendência de uma pessoa (pai, avô, bisavô, etc)
+3 - contar o número de descendentes de uma pessoa
+4 - listar os filhos de uma pessoa
+5 - listar os netos de uma pessoa
+6 - saber quem são os tios de uma pessoa
+7 - saber quem são os primos de uma pessoa
+8 - mostrar uma estrutura hierárquica contendo os dados da família, a partir de um nome fornecido
+
+Escrever um arquivo de teste que permita avaliar as funcionalidades implementadas.
