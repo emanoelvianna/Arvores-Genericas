@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-
 public class GeneralTree {
 	private Node raiz;
 
@@ -69,28 +68,106 @@ public class GeneralTree {
 		}
 	}
 
-	public void mostrar(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public List<String> primos(String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<String> netos(String string) {
-		// TODO Auto-generated method stub
-		return null;
+	public int altura(String string) {
+		return 0;
 	}
 
 	public List<String> ascendentes(String string) {
-		// TODO Auto-generated method stub
+		Node aux = pesquisa(string, raiz);
+		if (aux != null) {
+			ascendentes(aux);
+		}
 		return null;
 	}
 
-	public String contarDescendentes(String string) {
-		// TODO Auto-generated method stub
+	private void ascendentes(Node aux) {
+
+	}
+
+	public int contarDescendentes(String string) {
+		Node aux = pesquisa(string, raiz);
+		if (aux != null) {
+			return contarDescendentes(aux);
+		}
+		return 0;
+	}
+
+	public String listarFilhos(String string) {
+		Node aux = pesquisa(string, raiz);
+		if (aux != null) {
+			return listarFilhos(aux);
+		}
+		return "";
+	}
+
+	private String listarFilhos(Node aux) {
+		String lista = "";
+		for (Node filhos : aux.Filhos) {
+			lista += filhos.Elem;
+		}
+		return lista;
+	}
+
+	public List<String> netos(String string) {
+		Node aux = pesquisa(string, raiz);
+		return listarNetos(aux);
+	}
+
+	private List<String> listarNetos(Node aux) {
+		List<String> lista = new ArrayList<String>();
+		for (Node filhos : aux.Filhos) {
+			lista.add(listarFilhos(filhos));
+		}
+		return lista;
+	}
+
+	private int contarDescendentes(Node node) {
+		int total = node.Filhos.size();
+		for (Node filhos : node.Filhos) {
+			return total += contarDescendentes(filhos);
+		}
+		return total;
+	}
+
+	public String tios(String string) {
+		Node aux = pesquisa(string, raiz);
+		if (aux != null) {
+			return tios(aux);
+		}
+		return "";
+	}
+
+	private String tios(Node aux) {
+		Node meuPai = aux.Pai;
+		Node avo = meuPai.Pai;
+		String lista = "";
+		for (Node filhosAvo : avo.Filhos) {
+			if (filhosAvo != meuPai) {
+				lista += filhosAvo;
+			}
+		}
+		return "";
+	}
+
+	public List<Node> primos(String string) {
+		Node aux = pesquisa(string, raiz);
+		return primos(aux);
+	}
+
+	private List<Node> primos(Node aux) {
+		Node meuPai = aux.Pai;
+		Node meuAvo = meuPai.Pai;
+		List<Node> lista = new ArrayList<Node>();
+		for (Node filhosAvo : meuAvo.Filhos) {
+			if (meuPai != meuAvo.Filhos) {
+				lista.addAll(filhosAvo.Filhos);
+			}
+		}
 		return null;
+	}
+
+	public void mostrar(String string) {
+		// TODO Auto-generated method stub
+
 	}
 }
